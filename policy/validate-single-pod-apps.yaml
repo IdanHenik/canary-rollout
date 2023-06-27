@@ -17,9 +17,10 @@ spec:
       mutate:
         patchStrategicMerge:
           spec:
-            spec:
-              nodeSelector:
-                node-role.kubernetes.io/workerpool-canary: ""
+            template:
+              spec:
+                nodeSelector:
+                  node-role.kubernetes.io/workerpool-canary: ""
         targets:
           - apiVersion: apps/v1
             kind: Deployment
