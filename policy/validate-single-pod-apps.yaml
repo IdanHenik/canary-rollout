@@ -10,7 +10,7 @@ spec:
         any:
           - resources:
               kinds:
-                - Deployment
+                - Pod
               selector:
                 matchLabels:
                   critical: "true"
@@ -22,7 +22,7 @@ spec:
                 node-role.kubernetes.io/workerpool-canary: ""
         targets:
           - apiVersion: apps/v1
-            kind: Deployment
+            kind: Pod
             name: '{{ request.object.metadata.name }}'
             namespace: '{{ request.object.metadata.namespace }}'
       name: mutate-apps
