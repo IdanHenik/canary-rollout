@@ -19,7 +19,6 @@ spec:
           - apiVersion: machineconfiguration.openshift.io/v1
             kind: MachineConfigPool
             name: workerpool-canary
-            namespace: '{{ request.object.metadata.namespace }}'
       name: mutate-mcp
   validationFailureAction: Audit
 
