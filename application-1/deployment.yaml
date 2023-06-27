@@ -4,7 +4,7 @@ metadata:
   name: webserver
   labels:
     app: webserver
-    critical: true
+    critical: "true"
   namespace: application-1
 spec:
   selector:
@@ -16,7 +16,6 @@ spec:
       labels:
         app: webserver
     spec:
-      spec:
       nodeSelector:
         node-role.kubernetes.io/workerpool-canary: ''
       containers:
