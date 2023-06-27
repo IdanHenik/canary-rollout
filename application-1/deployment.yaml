@@ -16,8 +16,6 @@ spec:
       labels:
         app: webserver
     spec:
-      nodeSelector:
-        node-role.kubernetes.io/workerpool-canary: ''
       containers:
         - name: apache
           image: docker.io/bitnami/apache:2.4.46
