@@ -17,7 +17,9 @@ spec:
       mutate:
         patchStrategicMerge:
           spec:
-            paused: true
+            nodeSelector:
+              matchLabels:
+                node-role.kubernetes.io/workerpool-canary: ""
         targets:
           - apiVersion: apps/v1
             kind: Deployment
