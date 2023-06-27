@@ -13,11 +13,11 @@ spec:
                 - Deployment
               selector:
                 matchLabels:
-                  critical: true
+                  critical: "true"
       mutate:
         patchStrategicMerge:
           spec:
-            paused: 'true'
+            paused: true
         targets:
           - apiVersion: apps/v1
             kind: Deployment
