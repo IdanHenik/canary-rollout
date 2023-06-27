@@ -1,0 +1,28 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: mutate-apps
+spec:
+  background: true
+  mutateExistingOnPolicyUpdate: true
+  rules:
+    - match:
+        any:
+          - resources:
+              kinds:
+                - Deployment
+              selector:
+              matchLabels:
+                critical: true
+      mutate:
+        patchStrategicMerge:
+          spec:
+            paused: true
+        targets:
+          - apiVersion: apps/v1
+            kind: Deployment
+            name: '{{ request.object.metadata.name }}'
+            namespace: '{{ request.object.metadata.namespace }}'
+      name: mutate-apps
+  validationFailureAction: Audit
+

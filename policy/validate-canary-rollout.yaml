@@ -1,0 +1,25 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: mutate-mcp
+spec:
+  background: true
+  mutateExistingOnPolicyUpdate: true
+  rules:
+    - match:
+        any:
+          - resources:
+              kinds:
+                - MachineConfigPool
+      mutate:
+        patchStrategicMerge:
+          spec:
+            paused: true
+        targets:
+          - apiVersion: machineconfiguration.openshift.io/v1
+            kind: MachineConfigPool
+            name: 'workerpool-canary'
+            namespace: '{{ request.object.metadata.namespace }}'
+      name: mutate-mcp
+  validationFailureAction: Audit
+
