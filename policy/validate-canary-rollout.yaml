@@ -14,7 +14,7 @@ spec:
       mutate:
         patchStrategicMerge:
           spec:
-            Paused: true
+            paused: true
         targets:
           - apiVersion: machineconfiguration.openshift.io/v1
             kind: MachineConfigPool
