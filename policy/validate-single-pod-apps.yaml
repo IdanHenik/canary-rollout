@@ -10,18 +10,19 @@ spec:
         any:
           - resources:
               kinds:
-                - Pod
+                - Deployment
               selector:
                 matchLabels:
                   critical: "true"
       mutate:
         patchStrategicMerge:
           spec:
-            nodeSelector:
-              node-role.kubernetes.io/workerpool-canary: ""
+            spec:
+              nodeSelector:
+                node-role.kubernetes.io/workerpool-canary: ""
         targets:
-          - apiVersion: v1
-            kind: Pod
+          - apiVersion: apps/v1
+            kind: Deployment
             name: '{{ request.object.metadata.name }}'
             namespace: '{{ request.object.metadata.namespace }}'
       name: mutate-apps
