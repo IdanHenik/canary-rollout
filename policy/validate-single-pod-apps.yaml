@@ -12,8 +12,8 @@ spec:
               kinds:
                 - Deployment
               selector:
-              matchLabels:
-                critical: true
+                matchLabels:
+                  critical: true
       mutate:
         patchStrategicMerge:
           spec:
