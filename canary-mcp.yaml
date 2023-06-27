@@ -13,5 +13,5 @@ spec:
   nodeSelector:
     matchLabels:
       node-role.kubernetes.io/workerpool-canary: ""
-  paused: false
+  paused: true
 
